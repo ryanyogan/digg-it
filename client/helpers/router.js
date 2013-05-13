@@ -1,5 +1,7 @@
 Meteor.Router.add({
-  '/': 'postsList',
+  '/': {to: 'newPosts', as: 'home'},
+  '/best': 'bestPosts',
+  '/new': 'newPosts',
 
   '/posts/:_id': {
     to: 'postPage',
@@ -24,7 +26,7 @@ Meteor.Router.filters({
       return 'accessDenied';
   },
   'clearErrors': function(page) {
-    clearErrors();
+    Meteor.Errors.clear();
     return page;
   }
 })
